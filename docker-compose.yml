@@ -6,6 +6,8 @@ services:
     container_name: nextjs-frontend
     ports:
       - "80:3000"
+    environment:
+      - BACKEND_BASEURL=http://portfolio-service:8080
     depends_on:
       - portfolio-service
     networks:
@@ -17,7 +19,7 @@ services:
       dockerfile: Dockerfile
     container_name: portfolio-service
     ports:
-      - "8080:8080"
+      - "8080"
     depends_on:
       - stock-service
     networks:
@@ -29,7 +31,7 @@ services:
       dockerfile: Dockerfile
     container_name: stock-service
     ports:
-      - "5000:5000"
+      - "5000"
     environment:
       - FLASK_ENV=production
     networks:
