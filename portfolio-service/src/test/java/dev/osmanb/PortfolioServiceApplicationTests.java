@@ -1,4 +1,4 @@
-package dev.osmanb.portfolioService;
+package dev.osmanb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
