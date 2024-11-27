@@ -22,6 +22,8 @@ services:
       - "8080"
     depends_on:
       - stock-service
+    environment:
+      - STOCK_METRICS_BASEURL=http://stock-service:5000
     networks:
       - app-network
 
