@@ -1,7 +1,7 @@
 package dev.osmanb.portfolioService.service;
 
-import dev.osmanb.portfolioOptimization.model.PortfolioRequest;
-import dev.osmanb.portfolioOptimization.model.PortfolioResponse;
+import dev.osmanb.portfolioService.model.PortfolioRequest;
+import dev.osmanb.portfolioService.model.PortfolioResponse;
 
 public interface PortfolioOptimizationService {
     PortfolioResponse optimalPortfolio(PortfolioRequest request);
