@@ -15,7 +15,7 @@ public class YFinanceService {
     private final String baseUrl;
     private final WebClient webClient;
 
-    public YFinanceService(@Value("${yfinance.baseurl}") String baseUrl, WebClient webClient) {
+    public YFinanceService(@Value("${stockMetrics.baseurl}") String baseUrl, WebClient webClient) {
         this.baseUrl = baseUrl;
         this.webClient = webClient;
     }
