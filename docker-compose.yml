@@ -1,0 +1,44 @@
+services:
+  frontend:
+    build:
+      context: ./optimal-portfolio-app
+      dockerfile: Dockerfile
+    container_name: nextjs-frontend
+    ports:
+      - "80:3000"
+    environment:
+      - BACKEND_BASEURL=http://portfolio-service:8080
+    depends_on:
+      - portfolio-service
+    networks:
+      - app-network
+
+  portfolio-service:
+    build:
+      context: ./portfolio-service
+      dockerfile: Dockerfile
+    container_name: portfolio-service
+    ports:
+      - "8080"
+    depends_on:
+      - stock-service
+    environment:
+      - STOCK_METRICS_BASEURL=http://stock-service:5000
+    networks:
+      - app-network
+
+  stock-service:
+    build:
+      context: ./stock-service
+      dockerfile: Dockerfile
+    container_name: stock-service
+    ports:
+      - "5000"
+    environment:
+      - FLASK_ENV=production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

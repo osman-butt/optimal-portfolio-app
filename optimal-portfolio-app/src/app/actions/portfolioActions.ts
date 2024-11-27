@@ -2,6 +2,8 @@
 
 import { PortfolioOptimizationResponse } from "@/app/types";
 
+const BACKEND_BASEURL = process.env.BACKEND_BASEURL;
+
 export async function calculatePortfolio(tickers: string[]): Promise<{
   data: PortfolioOptimizationResponse | null;
   error: string | null;
@@ -15,7 +17,7 @@ export async function calculatePortfolio(tickers: string[]): Promise<{
 
   try {
     const response = await fetch(
-      "http://localhost:8080/api/portfolio/optimization",
+      BACKEND_BASEURL + "/api/portfolio/optimization",
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
