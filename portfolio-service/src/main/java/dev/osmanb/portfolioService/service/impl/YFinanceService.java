@@ -22,7 +22,7 @@ public class YFinanceService {
 
     public Mono<YFinanceResponse> getStockData(PortfolioRequest portfolioRequest) throws JsonProcessingException {
         return webClient.post()
-                .uri(baseUrl)
+                .uri(baseUrl+"/portfolio/metrics")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .bodyValue(portfolioRequest.toJson())
