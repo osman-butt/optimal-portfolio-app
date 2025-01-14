@@ -4,8 +4,8 @@ This application implements the **Markowitz Portfolio Optimization** algorithm, 
 
 The system is composed of three main services:
 
-- **Frontend** (Next.js)
-- **Portfolio Optimization Service** (Java)
+- **Frontend** (Next.js 14)
+- **Portfolio Optimization Service** (Java / Spring boot)
 - **Stock Data Service** (Python with Flask)
 These services work together in a Docker-based environment, where each service is isolated within its own container.
 
