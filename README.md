@@ -2,6 +2,9 @@
 
 This application implements the **Markowitz Portfolio Optimization** algorithm, which is a method for selecting the optimal portfolio allocation by maximizing expected return for a given level of risk. The project is built using a combination of Next.js for the frontend, Java for the optimization logic, Python (Flask) for retrieving real financial data, and Docker for containerization.
 
+![Main UI](https://github.com/osman-butt/optimal-portfolio-app/blob/main/docs/main_ui.PNG)
+
+
 The system is composed of three main services:
 
 - **Frontend** (Next.js 14)
