@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import pandas as pd
 import yfinance as yf
+import datetime as dt
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -17,9 +18,14 @@ def calculate_portfolio_metrics():
     try:
         tickers = sorted(tickers)
 
-        prices = yf.download(tickers, start="2010-01-01", end="2024-01-01")["Adj Close"]
+        years = 10
 
-        yearly_prices = prices.resample('Y').last()
+        end = dt.date.today()
+        start = end - dt.timedelta(days=365 * years)
+
+        prices = yf.download(tickers, start, end)["Close"]
+
+        yearly_prices = prices.resample('YE').last()
 
         yearly_returns = yearly_prices.pct_change().dropna()
 
@@ -28,8 +34,8 @@ def calculate_portfolio_metrics():
         covariance_matrix = yearly_returns.cov().values.tolist()
 
         # TODO: CHOOSE AN APPROPRIATE RISK-FREE RATE
-        risk_free_data = yf.download("^IRX", start="2010-01-01", end="2024-01-01")["Adj Close"]
-        risk_free_rate = (risk_free_data.resample('Y').last().mean() / 100).item()  # Convert to decimal
+        risk_free_data = yf.download("^IRX", start, end)["Close"]
+        risk_free_rate = (risk_free_data.resample('YE').last().mean() / 100).item()  # Convert to decimal
 
         response = {
             "tickers": tickers,
